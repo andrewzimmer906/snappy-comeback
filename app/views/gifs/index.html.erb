@@ -1,0 +1,23 @@
+<h1>Listing gifs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gifs.each do |gif| %>
+  <tr>
+    <td><%= gif.title %></td>
+    <td><%= link_to 'Show', gif %></td>
+    <td><%= link_to 'Edit', edit_gif_path(gif) %></td>
+    <td><%= link_to 'Destroy', gif, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gif', new_gif_path %>
