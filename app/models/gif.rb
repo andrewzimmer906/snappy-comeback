@@ -2,6 +2,7 @@ class Gif < ActiveRecord::Base
   #Tire Includes (Search)
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  index_name BONSAI_INDEX_NAME
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
