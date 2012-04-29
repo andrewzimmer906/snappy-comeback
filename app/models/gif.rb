@@ -7,6 +7,10 @@ class Gif < ActiveRecord::Base
     index_name BONSAI_INDEX_NAME
   end
   
+mapping do
+  indexes :title, boost: 10
+end
+  
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   has_many :taggings, :dependent => :destroy
@@ -16,19 +20,37 @@ class Gif < ActiveRecord::Base
   after_save :assign_tags
     
   #Search Mapping
-  def to_indexed_json
-  	to_json(:only => :title, :include => :tags)
-  end
-    
+  #def to_indexed_json
+  #	to_json(:only => :title, :include => :tags)
+  #end
     
   #Search Function
   def self.search(params)
-    tire.search(load: true) do
-      query { string params[:query], default_operator: "AND" } if params[:query].present?
-	end	  
+  	if params[:query].present?
+  		titleGifs = self.privateSearch(params)
+  		curGifs = Array.new
+  		titleGifs.each do |gif|
+  			curGifs.push(gif)
+  		end
+  		
+   		curTags = Tag.search(params) 		
+  		curTags.each do |tag|
+  			curGifs |= tag.gifs
+  		end
+  		curGifs
+  	else
+  		Gif.all
+  	end
+      
   end
   
   private
+  
+  def self.privateSearch(params)
+  	tire.search(load: true) do
+  	  query { string params[:query], default_operator: "AND" } if params[:query].present?
+  	end	
+  end
   
   def assign_tags
   	if @tag_names
