@@ -1,3 +1,35 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home-centered {
+	width:463px;
+	margin: 100px auto;
+}
+
+.search-form {
+	width:463px;
+	height:58px;
+	background: url(image_path('searchBG.png')) no-repeat;
+}
+
+.search-input {
+	border: none;
+	margin: 17px 0px 0px 55px;
+	width: 300px;
+	font-size:18px;
+}
+
+.search-btn {
+	width:83px;
+	height:34px;
+	background: url(image_path('searchBtn.png')) no-repeat;
+	border: 0px;
+	text-indent: -5000px;
+	padding-top: 8px;
+	margin-left:5px;
+}
+
+.search-btn:hover {
+	background-position: -84px 0px;
+}

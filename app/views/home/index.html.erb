@@ -1,8 +1,4 @@
-<h1>Snappy Comeback</h1>
-
-<%= form_tag gifs_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
-<% end %>
+<div class="home-centered">
+<%= render 'shared/search' %>
+<p>Try searching for an emotion or a reaction such as <em>dismay</em> or <em>excitement</em>.</p>
+</div>

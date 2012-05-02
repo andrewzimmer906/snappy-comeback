@@ -3,7 +3,9 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px; 
+  margin:0px;
+  }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -54,3 +56,43 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
+
+/*Mine*/
+header {
+	margin: 0px;
+	padding: 0px;
+	height:40px;
+	background-color: #ccc
+}
+
+h1 {
+	font-size: 17px;
+	margin: 0px;
+	padding: 10px 0px 0px 10px;
+	color:#666666;
+	float:left;
+}
+
+h2 {
+	font-size: 15px;
+	margin: 0px 10px;
+	padding: 11px 10px 0px 0px;
+	color:#666666;
+	text-align:right;
+	float:left;
+}
+
+//buttons
+.add-gif-btn {
+	width:83px;
+	height:34px;
+	background: url(image_path('addBtn.png')) no-repeat;
+	text-indent: -5000px;
+	float:right;
+	margin: -26px 10px 0px 0px;
+}
+
+.add-gif-btn:hover {
+	background-position: -84px 0px;
+	background-color:transparent;
+}

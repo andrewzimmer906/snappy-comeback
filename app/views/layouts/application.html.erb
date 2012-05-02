@@ -6,9 +6,17 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+<header>
+	<h1>Snappy Comeback</h1>
+	<h2 class="right">(Go ahead, GIF somebody)</h2>
+	<div style="clear: both;"></div> 
+	<%= link_to 'Add Gif', new_gif_path, class: 'add-gif-btn' %>
+</header>
 
+<%= yield %>
 </body>
+
 </html>
