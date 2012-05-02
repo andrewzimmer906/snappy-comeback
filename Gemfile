@@ -6,6 +6,8 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "paperclip", "~> 3.0"
+gem 'aws-s3'
+gem 'aws-sdk'
 
 #fix for heroku
 # gem 'sqlite3'

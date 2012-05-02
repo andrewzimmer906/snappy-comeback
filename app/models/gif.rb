@@ -1,3 +1,5 @@
+
+
 class Gif < ActiveRecord::Base
   #Tire Includes (Search)
   include Tire::Model::Search
@@ -11,7 +13,10 @@ mapping do
   indexes :title, boost: 10
 end
   
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+  :storage => :s3,
+  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  :path => "/:style/:id/:filename"
   
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
