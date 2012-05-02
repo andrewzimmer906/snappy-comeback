@@ -10,5 +10,5 @@ test:
   
 production:
   bucket: snappycomeback-bucket-pro
-  access_key_id: ENV['AWS_ACCESS_KEY_ID']
-  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  access_key_id: AKIAJYZNA6RWDR64BFPA #ENV['AWS_ACCESS_KEY_ID']
+  secret_access_key: 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 #ENV['AWS_SECRET_ACCESS_KEY']
