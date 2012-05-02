@@ -1,10 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @tag.name %>
-</p>
+<div id='centered-search-gifs'>
+	<%= render 'shared/search' %>
+</div>
 
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<div id='gifs-centered'>
+	<% @gifs.each do |gif| %>
+		<h2><%= gif.title %></h2>
+		<%= image_tag gif.image.url, class: 'gif-image', height: '150px' %>
+		<% gif.tags.each do |tag| %>
+			<%= link_to tag.name, tag, class: 'gif-tag' %>
+		<% end %>
+	<% end %>
+</div>
+
