@@ -1,25 +1,20 @@
 <%= form_for @gif, :html => { :multipart => true } do |f| %>
   <% if @gif.errors.any? %>
+  	
     <div id="error_explanation">
-      <h2><%= pluralize(@gif.errors.count, "error") %> prohibited this gif from being saved:</h2>
-
-      <ul>
-      <% @gif.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <h2>Looks like you didn&#39;t fill in all the fields</h2>
     </div>
+    <div style="clear: both;"></div> 
   <% end %>
 
+
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: 'Title', class: 'text' %>
+    <p>Use a descriptive title such as <em>When a stranger talks to me</em> or <em>When asked if I'm single</em>.</p>
     
-    <%= f.file_field :image %>
-  	<p>
-  		<%= f.label :tag_names %>
-  		<%= f.text_field :tag_names %>
-  	</p>
+    <%= f.file_field :image, class: 'image-input' %>
+  		<%= f.text_area :tag_names, placeholder: 'Tags', class: 'text', :rows=>5, :cols=>60, data: {autocomplete_source:Tag.order(:name).map(&:name)} %>
+  		<p>Choose emotional keywords such as <em>Happy</em> or <em>Anxious</em>.</p>
   	
   </div>
   <div class="actions">

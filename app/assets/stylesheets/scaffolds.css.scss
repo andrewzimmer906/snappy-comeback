@@ -18,9 +18,8 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666; }
+  color: #C0C0C0;
+  text-decoration:none;
   &:hover {
     color: #fff;
     background-color: #000; } }
@@ -31,28 +30,34 @@ div {
 
 #notice {
   color: green; }
+  
+  
+.field .text {
+	display:block;
+	border-width:5px 5px 5px 5px;
+	border-image: url(image_path('input-field.png')) 5 5 5 5 stretch repeat;
+}
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table; }
+.field_with_errors .text {
+	border-width:10px 11px;
+	border-image: url(image_path('input-field-error.png')) 10 11 stretch repeat;
+	margin-left:-5px;
+ }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+display:block;
+  width: 100%;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
   h2 {
     text-align: left;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
+    padding: 5px 5px 5px 0px;
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff; }
+    color: #c00; }
   ul li {
     font-size: 12px;
     list-style: square; } }
@@ -62,24 +67,27 @@ header {
 	margin: 0px;
 	padding: 0px;
 	height:40px;
-	background-color: #ccc
+	background-color: #1E1E1E
 }
 
 h1 {
 	font-size: 17px;
 	margin: 0px;
 	padding: 10px 0px 0px 10px;
-	color:#666666;
-	float:left;
 }
 
 h2 {
 	font-size: 15px;
 	margin: 0px 10px;
 	padding: 11px 10px 0px 0px;
-	color:#666666;
-	text-align:right;
-	float:left;
+}
+
+#body-wrapper {
+	margin:10px 0px;
+	padding:0px;
+	height:100%;
+	min-height:400px;
+	
 }
 
 //buttons
@@ -95,4 +103,23 @@ h2 {
 .add-gif-btn:hover {
 	background-position: -84px 0px;
 	background-color:transparent;
+}
+
+//Footer
+footer {
+	/*position:absolute;
+	bottom:0px;
+	margin: 0px;
+	padding: 0px;*/
+	height:20px;
+	width:100%;
+	background-color: #1E1E1E;
+	h1 {
+		font-weight:normal;
+		float:right;
+		padding-top: 2px;
+		font-size:12px;
+		padding-right:10px;
+		color:white;
+	}
 }

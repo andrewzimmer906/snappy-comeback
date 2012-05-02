@@ -9,9 +9,9 @@ class Gif < ActiveRecord::Base
     index_name BONSAI_INDEX_NAME
   end
   
-mapping do
-  indexes :title, boost: 10
-end
+  mapping do
+    indexes :title, boost: 10
+  end
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" },
   :storage => :s3,
@@ -23,7 +23,20 @@ end
   
   attr_accessor :tag_names
   after_save :assign_tags
-    
+ 
+ HUMANIZED_ATTRIBUTES = {
+     :tag_names => "Tags",
+     :title => "Title",
+     :image => "Image"
+   }
+   
+  validates_presence_of :title
+  validates_attachment_presence :image
+  validates_length_of :tag_names, :minimum => 1, message: "You need to choose at least one tag"
+  #￼validates :title, :presence => true
+  #validates :tags, :length => { :minimum => 1 }
+  #vaidates :image, :presence => true
+  
   #Search Mapping
   #def to_indexed_json
   #	to_json(:only => :title, :include => :tags)
@@ -32,11 +45,11 @@ end
   #Search Function
   def self.search(params)
   	if params[:query].present?
-  		titleGifs = self.privateSearch(params)
+  		#titleGifs = self.privateSearch(params)
   		curGifs = Array.new
-  		titleGifs.each do |gif|
-  			curGifs.push(gif)
-  		end
+  		#titleGifs.each do |gif|
+  		#	curGifs.push(gif)
+  		#end
   		
    		curTags = Tag.search(params) 		
   		curTags.each do |tag|
