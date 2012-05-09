@@ -1,0 +1,13 @@
+<div class="home-centered">
+<h1>New Tag</h1>
+<%= form_for @tag do |f| %>
+  <div class="field">
+    <%= f.text_field :name, placeholder: 'Title', class: 'text' %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>

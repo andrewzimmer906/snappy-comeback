@@ -10,5 +10,6 @@
 		<% gif.tags.each do |tag| %>
 			<%= link_to tag.name, tag, class: 'gif-tag' %>
 		<% end %>
+		<%= link_to "Edit Tags", edit_gif_path(gif) %>
 	<% end %>
 </div>

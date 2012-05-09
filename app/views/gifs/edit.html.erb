@@ -1,3 +1,5 @@
+<div class="home-centered">
+<h1>Edit the tags for this GIF</h1>
 <%= form_for @gif, :html => { :multipart => true } do |f| %>
   <% if @gif.errors.any? %>
   	
@@ -9,13 +11,6 @@
 
 
   <div class="field">
-    <%= f.text_field :title, placeholder: 'Title', class: 'text' %>
-    <p>Use a descriptive title such as <em>When a stranger talks to me</em> or <em>When asked if I'm single</em>.</p>
-    
-    <%= f.file_field :image, class: 'image-input' %>
-    
-  	<!--	<%= f.text_area :tag_names, placeholder: 'Tags', class: 'text', :rows=>5, :cols=>60, data: {autocomplete_source:Tag.order(:name).map(&:name)} %>
-  		<p>Choose emotional keywords such as <em>Happy</em> or <em>Anxious</em>.</p> -->
   	<% Tag.order(:name).each do |tag| %>
   		<p>
   		<%= tag.name %>
@@ -28,3 +23,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+</div>

@@ -22,7 +22,7 @@ class Gif < ActiveRecord::Base
   has_many :tags, :through => :taggings
   
   attr_accessor :tag_names
-  after_save :assign_tags
+#  after_save :assign_tags
  
  HUMANIZED_ATTRIBUTES = {
      :tag_names => "Tags",
@@ -32,7 +32,7 @@ class Gif < ActiveRecord::Base
    
   validates_presence_of :title
   validates_attachment_presence :image
-  validates_length_of :tag_names, :minimum => 1, message: "You need to choose at least one tag"
+  #validates_length_of :tag_names, :minimum => 1, message: "You need to choose at least one tag"
   #￼validates :title, :presence => true
   #validates :tags, :length => { :minimum => 1 }
   #vaidates :image, :presence => true
@@ -70,13 +70,13 @@ class Gif < ActiveRecord::Base
   	end	
   end
   
-  def assign_tags
-  	if @tag_names
-  		self.tags = @tag_names.split(/, */).map do |name|
-  			Tag.find_or_create_by_name(name)
-  		end
-  	end
-  end
+  #def assign_tags
+  #	if @tag_names
+  #		self.tags = @tag_names.split(/, */).map do |name|
+  #			Tag.find_or_create_by_name(name)
+  #		end
+  #	end
+  #end
   
   def tag_names
   	@tag_names || tags.map(&:name).join(', ')
