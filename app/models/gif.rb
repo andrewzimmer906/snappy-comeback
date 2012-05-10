@@ -13,6 +13,7 @@ class Gif < ActiveRecord::Base
   mapping do
     indexes :title, boost: 10
     indexes :tag_names
+    indexes :created_at, type: 'date'
   end
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" },
@@ -47,7 +48,8 @@ class Gif < ActiveRecord::Base
   #Search Function
   def self.search(params)
 	  tire.search(load: true, page: params[:page], per_page: 5) do
-	    query { string params[:query], default_operator: "AND" } if params[:query].present?
+       	query { string params[:query], default_operator: "AND" } if params[:query].present?
+    	sort { by :created_at, "desc" } if params[:query].blank?
 	  end	
   end
   
