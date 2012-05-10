@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'will_paginate'
 
 class Gif < ActiveRecord::Base
 
@@ -52,9 +53,7 @@ class Gif < ActiveRecord::Base
 	  	 	query { string params[:query], default_operator: "AND" } if params[:query].present?
 	  	end
 	  else
-		  tire.search(load: true, page: params[:page], per_page: 5) do
-		  	sort { by :created_at, "desc" }
-		  end
+	  	Gif.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
 	  end
   end
   
