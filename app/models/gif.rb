@@ -47,10 +47,15 @@ class Gif < ActiveRecord::Base
     
   #Search Function
   def self.search(params)
-	  tire.search(load: true, page: params[:page], per_page: 5) do
-       	query { string params[:query], default_operator: "AND" } if params[:query].present?
-    	sort { by :created_at, "desc" } if params[:query].blank?
-	  end	
+	  if(params[:query].present?)
+	  	tire.search(load: true, page: params[:page], per_page: 5) do
+	  	 	query { string params[:query], default_operator: "AND" } if params[:query].present?
+	  	end
+	  else
+		  tire.search(load: true, page: params[:page], per_page: 5) do
+		  	sort { by :created_at, "desc" }
+		  end
+	  end
   end
   
   def image_from_url(url)
