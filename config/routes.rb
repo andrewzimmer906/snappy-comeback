@@ -7,7 +7,8 @@ SnappyComeback::Application.routes.draw do
   root :to => 'home#index'
 
   resources :gifs
-
+  
+  match '/empty' => 'gifs#show_empty'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

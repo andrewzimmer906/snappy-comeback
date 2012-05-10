@@ -1,27 +1,28 @@
 <div class="home-centered">
-<h1>Edit the tags for this GIF</h1>
-<%= form_for @gif, :html => { :multipart => true } do |f| %>
-  <% if @gif.errors.any? %>
-  	
-    <div id="error_explanation">
-      <h2>Looks like you didn&#39;t fill in all the fields</h2>
-    </div>
-    <div style="clear: both;"></div> 
-  <% end %>
-
-
-  <div class="field">
-  	<% Tag.order(:name).each do |tag| %>
-  		<p>
-  		<%= tag.name %>
-  		<%= check_box_tag :tag_ids, tag.id, @gif.tags.include?(tag), :name => 'gif[tag_ids][]' %>
-  		</p>
-  	<% end %>
-  	
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<h1>Edit the tags for this GIF</h1>
+	<h2><%= @gif.title %></h2>
+	<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
+	
+	<%= form_for @gif, :html => { :multipart => true } do |f| %>
+	  <% if @gif.errors.any? %>
+	  	
+	    <div id="error_explanation">
+	      <h2>Looks like you didn&#39;t fill in all the fields</h2>
+	    </div>
+	    <div style="clear: both;"></div> 
+	  <% end %>
+	
+	
+	  <div class="tag-field">
+  	  	<% Tag.order(:name).each do |tag| %>
+  	  		
+  	  		<label class="checkbox-tag"><div class="tag-left"></div><div class="tag-stretch"><%= tag.name %><%= check_box_tag :tag_ids, tag.id, @gif.tags.include?(tag), :name => 'gif[tag_ids][]' %></div> <div class="tag-right"></div></label>
+  	  	<% end %>
+	  </div>
+	  
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
 
 </div>

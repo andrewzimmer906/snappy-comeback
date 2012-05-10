@@ -10,15 +10,24 @@
 #gifs-centered {
 	width:463px;
 	margin: 10px auto;
-}
-
-#gifs-centered h2 {
-	text-align:left;
-	margin: 30px 0px 0px 0px;
-	padding: 0px;
-	float:none;
-	display:block;
-	color:#121212;
+	a {
+		display:inline-block;
+		color:#666;
+		
+		&:hover {
+			color:#000;
+			background:transparent;
+		}
+	}
+	
+	h2 {
+		text-align:left;
+		margin: 30px 0px 0px 0px;
+		padding: 0px;
+		float:none;
+		display:block;
+		color:#121212;
+	}
 }
 
 .gif-image {
@@ -58,14 +67,52 @@
 	}
 }
 
-a.silver-btn {
+.tag-field {
+	display:block;
+}
+
+.checkbox-tag {
+	display:inline-block;
+	margin:8px 5px;
+}
+
+.tag-stretch {
+	padding:6px 0px;
+	display:inline;	
+	background: url(image_path('tag-stretch.png')) repeat-x;
+	height:27px;
+	font-weight: bold;
+}
+
+.tag-left {
+	margin: -8px 0px;
+	padding:0px;
+	background: url(image_path('tag-left.png')) no-repeat;
+	width:5px;
+	height:27px;
+	display:inline-block;
+}
+
+.tag-right {
+	margin: -8px -5px;
+	padding: 0px;
+	background: url(image_path('tag-right.png')) no-repeat;
+	width: 16px;
+	height: 27px;	
+	display:inline-block;
+}
+
+.gif-tag {
+	margin: 8px 5px 8px 0px;
+	padding:0px;
 	background-color:transparent;
-	border-width:10px 13px 10px 13px;
-	border-image: url(image_path('silver-btn.png')) 10 13 10 13 stretch stretch;
-	color:#2f3436;
-	
-	&:hover {
-		background:transparent;
-		color:#000;
+	display:inline-block;
+	a {
+		color:#666;
+		
+		&:hover {
+			color:#000;
+			background:transparent;
+		}
 	}
 }

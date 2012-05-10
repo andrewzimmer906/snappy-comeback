@@ -11,6 +11,7 @@ class Gif < ActiveRecord::Base
   
   mapping do
     indexes :title, boost: 10
+    indexes :tag_names
   end
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" },
@@ -21,8 +22,8 @@ class Gif < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
   
-  attr_accessor :tag_names
-#  after_save :assign_tags
+  before_save :assign_tags
+  before_update :assign_tags
  
  HUMANIZED_ATTRIBUTES = {
      :tag_names => "Tags",
@@ -44,21 +45,21 @@ class Gif < ActiveRecord::Base
     
   #Search Function
   def self.search(params)
-  	if params[:query].present?
-  		#titleGifs = self.privateSearch(params)
-  		curGifs = Array.new
-  		#titleGifs.each do |gif|
-  		#	curGifs.push(gif)
-  		#end
-  		
-   		curTags = Tag.search(params) 		
-  		curTags.each do |tag|
-  			curGifs |= tag.gifs
-  		end
-  		curGifs
-  	else
-  		Gif.all
-  	end
+	  tire.search(load: true) do
+	    query { string params[:query], default_operator: "AND" } if params[:query].present?
+	  end	
+  
+  	#if params[:query].present?
+  #		curGifs = Array.new
+  #		
+  # 		curTags = Tag.search(params) 		
+  #		curTags.each do |tag|
+  #			curGifs |= tag.gifs
+  #		end
+  #		curGifs
+  #	else
+  #		Gif.all
+  #	end
       
   end
   
@@ -70,15 +71,11 @@ class Gif < ActiveRecord::Base
   	end	
   end
   
-  #def assign_tags
-  #	if @tag_names
-  #		self.tags = @tag_names.split(/, */).map do |name|
-  #			Tag.find_or_create_by_name(name)
-  #		end
-  #	end
-  #end
-  
-  def tag_names
-  	@tag_names || tags.map(&:name).join(', ')
+  def assign_tags
+	  self.tag_names = tags.map(&:name).join(' ')
   end
+  
+#  def tag_names
+ # 	@tag_names || tags.map(&:name).join(', ')
+ # end
 end

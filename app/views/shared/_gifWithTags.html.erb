@@ -1,0 +1,6 @@
+<h2><%= @gif.title %></h2>
+<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
+<% @gif.tags.each do |tag| %>		
+	<div class="gif-tag"><div class="tag-left"></div><div class="tag-stretch"><%= link_to tag.name, tag %></div> <div class="tag-right"></div></div>
+<% end %>
+<%= link_to "Edit Tags", edit_gif_path(@gif) %>

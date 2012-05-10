@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div id='gifs-centered'>
-	<h2><%= @gif.title %></h2>
-		<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
-		<% @gif.tags.each do |tag| %>
-			<%= link_to tag.name, tag, class: 'gif-tag' %>
-	<% end %>
-	<div style="display:block; margin:25px auto; width:250px;">
-	<%= link_to 'Add Another', new_gif_path, class: 'silver-btn' %>
-	<%= link_to 'Find More Gifs', root_path, class: 'silver-btn' %>
+	<%= render 'shared/gifWithTags' %>
+	
+	<div style="display:block; margin:25px auto;">
+	<%= link_to 'Add Another', new_gif_path, class: 'button white' %>
+	<%= link_to 'Find More Gifs', root_path, class: 'button white' %>
 	</div>
 </div>

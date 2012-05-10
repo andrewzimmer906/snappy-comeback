@@ -13,17 +13,16 @@
     <p>Use a descriptive title such as <em>When a stranger talks to me</em> or <em>When asked if I'm single</em>.</p>
     
     <%= f.file_field :image, class: 'image-input' %>
-    
-  	<!--	<%= f.text_area :tag_names, placeholder: 'Tags', class: 'text', :rows=>5, :cols=>60, data: {autocomplete_source:Tag.order(:name).map(&:name)} %>
-  		<p>Choose emotional keywords such as <em>Happy</em> or <em>Anxious</em>.</p> -->
-  	<% Tag.order(:name).each do |tag| %>
-  		<p>
-  		<%= tag.name %>
-  		<%= check_box_tag :tag_ids, tag.id, @gif.tags.include?(tag), :name => 'gif[tag_ids][]' %>
-  		</p>
-  	<% end %>
-  	
+
+  	<div class='tag-field'>
+	  	<% Tag.order(:name).each do |tag| %>
+	  		
+	  		<label class="checkbox-tag"><div class="tag-left"></div><div class="tag-stretch"><%= tag.name %><%= check_box_tag :tag_ids, tag.id, @gif.tags.include?(tag), :name => 'gif[tag_ids][]' %></div> <div class="tag-right"></div></label>
+	  	<% end %>
+  	</div>
+  	<p>Choose emotional keywords that describe your GIF.</p>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

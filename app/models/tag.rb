@@ -12,7 +12,7 @@ class Tag < ActiveRecord::Base
 	#Search Function
 	def self.search(params)
 	  tire.search(load: true) do
-	    query { string params[:query], default_operator: "OR" } if params[:query].present?
+	    query { string params[:query], default_operator: "AND" } if params[:query].present?
 	  end
 	end	  
 end
