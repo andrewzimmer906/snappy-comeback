@@ -45,31 +45,12 @@ class Gif < ActiveRecord::Base
     
   #Search Function
   def self.search(params)
-	  tire.search(load: true) do
+	  tire.search(load: true, page: params[:page], per_page: 5) do
 	    query { string params[:query], default_operator: "AND" } if params[:query].present?
 	  end	
-  
-  	#if params[:query].present?
-  #		curGifs = Array.new
-  #		
-  # 		curTags = Tag.search(params) 		
-  #		curTags.each do |tag|
-  #			curGifs |= tag.gifs
-  #		end
-  #		curGifs
-  #	else
-  #		Gif.all
-  #	end
-      
   end
   
   private
-  
-  def self.privateSearch(params)
-  	tire.search(load: true) do
-  	  query { string params[:query], default_operator: "AND" } if params[:query].present?
-  	end	
-  end
   
   def assign_tags
 	  self.tag_names = tags.map(&:name).join(' ')

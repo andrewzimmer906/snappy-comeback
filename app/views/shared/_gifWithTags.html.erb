@@ -1,5 +1,7 @@
 <h2><%= @gif.title %></h2>
-<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
+<div class='gif-image-bg'>
+	<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
+</div>
 <% @gif.tags.each do |tag| %>		
 	<div class="gif-tag"><div class="tag-left"></div><div class="tag-stretch"><%= link_to tag.name, tag %></div> <div class="tag-right"></div></div>
 <% end %>
