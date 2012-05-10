@@ -1,6 +1,7 @@
-
+require 'open-uri'
 
 class Gif < ActiveRecord::Base
+
   #Tire Includes (Search)
   include Tire::Model::Search
   include Tire::Model::Callbacks
@@ -50,13 +51,13 @@ class Gif < ActiveRecord::Base
 	  end	
   end
   
+  def image_from_url(url)
+  	self.image = open(url)
+  end
+  
   private
   
   def assign_tags
 	  self.tag_names = tags.map(&:name).join(' ')
   end
-  
-#  def tag_names
- # 	@tag_names || tags.map(&:name).join(', ')
- # end
 end

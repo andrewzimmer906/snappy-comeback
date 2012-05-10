@@ -17,7 +17,7 @@ class GifsController < ApplicationController
   end
   
   def show_empty
-  	@gifs = Gif.find(:all, :conditions => {:tag_names => nil })
+  	@gifs = Gif.find(:all, :conditions => {:tag_names => nil||'' })
   	respond_to do |format|
   	  format.html # show.html.erb
   	  format.json { render json: @gif }
