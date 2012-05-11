@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'simple-rss'
 require 'open-uri'
+require 'cgi'
 
 desc "This task is called by the Heroku scheduler add-on"
 
@@ -13,15 +14,15 @@ task :get_gifs_from_reddit => :environment do
     	if(regResponse != nil)
     		link = regResponse[1]
     		
-    		gifsWithName = Gif.find(:all, :conditions => {:title => item.title })
+    		gifsWithName = Gif.find(:all, :conditions => {:title => CGI::unescape(item.title) })
     		
     		if gifsWithName.empty?
-    			gif = Gif.new(:title => item.title)
+    			gif = Gif.new(:title => CGI::unescape(item.title))
     			gif.image_from_url(link)
     			gif.save
-    			puts "Added Item: " + item.title + " : " + link
+    			puts "Added Item: " + CGI::unescape(item.title) + " : " + link
     		else
-    			puts "Skipping " + item.title + " (duplicate)"
+    			puts "Skipping " + CGI::unescape(item.title) + " (duplicate)"
     		end
     	else
     		puts "Error URL: " + item.title + '\n'
