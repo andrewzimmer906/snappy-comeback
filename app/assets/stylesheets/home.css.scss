@@ -4,7 +4,7 @@
 
 .home-centered {
 	width:463px;
-	margin: 100px auto;
+	margin:0px auto;
 	
 	h1 {
 		margin-bottom:20px;
@@ -12,52 +12,66 @@
 	}
 }
 
-.search-form {
+.vertically-centered {
+	height: 419px;
+	margin: -230px 0px 0px -231px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	
+	h2 {
+		margin:0px 0px 10px 0px;
+		padding: 0px;
+		text-align:center;
+	}
+	
+	p {
+		margin:0px;
+		padding:0px;
+		color:#939393;
+	}
+	
+	a {
+		color:#444;
+	}
+}
+
+//search home
+.search-form-home {
+	margin: 10px 0px 10px 0px;
 	width:463px;
 	height:58px;
 	background: url(image_path('searchBG.png')) no-repeat;
+	
+	p {
+		padding-top:11px;
+	}
+	
+	.search-input {
+		margin: 6px 0px 0px 55px;
+	}
 }
 
-.search-input {
-	border: none;
-	margin: 17px 0px 0px 55px;
-	width: 300px;
-	font-size:18px;
+#big-logo {
+	background: url(image_path('bigLogoHome.png')) no-repeat;
+	width:310px;
+	height:178px;
+	margin: 25px auto 0px auto;
+	 p {
+	 	padding: 52px 0px 0px 142px;
+	 	text-align:center;
+	 	font-size:14px;
+	 	font-weight:bold;
+	 	color: #343434;
+	 }
 }
 
-.search-btn {
-	width:83px;
-	height:34px;
-	background: url(image_path('searchBtn.png')) no-repeat;
-	border: 0px;
-	text-indent: -5000px;
-	padding-top: 8px;
-	margin-left:5px;
-}
-
-.search-btn:hover {
-	background-position: -84px 0px;
-}
-
-ul.ui-autocomplete {
-  position: absolute;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border: solid 1px #999;
-  cursor: default;
-  li {
-    background-color: #FFF;
-    border-top: solid 1px #DDD;
-    margin: 0;
-    padding: 0;
-    a {
-      color: #000;
-      display: block;
-      padding: 3px;
-    }
-    a.ui-state-hover, a.ui-state-active {
-      background-color: #bee577;
-    }
-  }
+#home-tags {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+	padding: 10px;
 }

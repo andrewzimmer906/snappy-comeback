@@ -13,21 +13,22 @@ task :get_gifs_from_reddit => :environment do
     	regResponse = item.description.match(/&lt;a href=&#34;(http:\/\/i?.?(minus|imgur).com\/.+)&#34;&gt;\[link\]/i)
     	if(regResponse != nil)
     		link = regResponse[1]
+    		title = CGI::unescape(item.title)
+   			title = title.gsub("&quot;", "\"");
     		
-    		gifsWithName = Gif.find(:all, :conditions => {:title => CGI::unescape(item.title) })
+    		gifsWithName = Gif.find(:all, :conditions => {:title => title })
     		
     		if gifsWithName.empty?
-    			gif = Gif.new(:title => CGI::unescape(item.title))
+    			gif = Gif.new(:title => title)
     			gif.image_from_url(link)
     			gif.save
-    			puts "Added Item: " + CGI::unescape(item.title) + " : " + link
+    			puts "Added Item: " + title + " : " + link
     		else
-    			puts "Skipping " + CGI::unescape(item.title) + " (duplicate)"
+    			puts "Skipping " + title + " (duplicate)"
     		end
     	else
     		puts "Error URL: " + item.title + '\n'
     	end
     end
-    
     puts "done."
 end

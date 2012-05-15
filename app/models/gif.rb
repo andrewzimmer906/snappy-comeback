@@ -45,7 +45,7 @@ class Gif < ActiveRecord::Base
   #def to_indexed_json
   #	to_json(:only => :title, :include => :tags)
   #end
-    
+       
   #Search Function
   def self.search(params)
 	  if(params[:query].present?)
@@ -59,6 +59,18 @@ class Gif < ActiveRecord::Base
   
   def image_from_url(url)
   	self.image = open(url)
+  end
+  
+  def Gif.empty_gifs_with_paging(params)
+  	Gif.paginate(:page => params[:page], :per_page => 5, :conditions => {:tag_names => nil||'' }).order('created_at DESC')
+  		
+	  #Gif.find(:all, :conditions => {:tag_names => nil||'' }).paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  end
+  
+  def Gif.confusedGif
+  	tire.search(load: true, page: 1, per_page: 1) do
+  	 	query { string "Confused", default_operator: "AND" }
+  	end
   end
   
   private

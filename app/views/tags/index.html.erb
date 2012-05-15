@@ -1,22 +1,10 @@
-<h1>Listing tags</h1>
+<%= render 'shared/rightColumn' %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tags.each do |tag| %>
-  <tr>
-    <td><%= tag.name %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tag', new_tag_path %>
+<div id='gifs-centered'>
+	<h2>Our Sorting System</h2>
+	<p>We tag our gifs by emotion, allowing you to search by how you'd like to react.  For example, you might be <em>Angry</em> or <em>Incredulous</em>.  If we don't have any tags you'd like to see, shoot us an email at <a href="mailto:andrewzimmer906@gmail.com?Subject=Tag%20Suggestion">andrewzimmer906@gmail.com</a>.</p>
+	
+	<% @tags.each do |tag| %>
+	  <div class="gif-tag"><div class="tag-left"></div><div class="tag-stretch"><%= link_to tag.name, tag %></div> <div class="tag-right"></div></div>
+	<% end %>
+</div>

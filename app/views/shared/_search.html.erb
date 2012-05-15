@@ -1,6 +1,6 @@
 <%= form_tag gifs_path, class: 'search-form', method: :get do %>
   <p>
     <%= text_field_tag :query, params[:query], class: 'search-input', data: {autocomplete_source:Tag.order(:name).map(&:name)} %>
-    <%= submit_tag "Search", name: nil, class: 'search-btn' %>
+    <!-- <%= submit_tag "Search", name: nil, class: 'search-btn' %> -->
   </p>
 <% end %>

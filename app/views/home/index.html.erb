@@ -1,4 +1,23 @@
-<div class="home-centered">
-<%= render 'shared/search' %>
-<p>Try searching for an emotion or a reaction such as <em>Embarrassed</em> or <em>Happy</em>.</p>
+<div class="home-centered vertically-centered">
+<div id="big-logo"><p>I feel...</p></div>
+
+<%= form_tag gifs_path, class: 'search-form-home', method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query], class: 'search-input', data: {autocomplete_source:Tag.order(:name).map(&:name)} %>
+    <!-- <%= submit_tag "Search", name: nil, class: 'search-btn' %> -->
+  </p>
+<% end %>
+<p>Try searching for an emotion or a reaction such as <em>Embarrassed</em> or <em>Happy</em>. If that doesn't feel quite right, try <%= link_to "browsing.", tags_path %></p>
+
+
+<!-- 
+<h2>- OR -</h2>
+<p>Check out some of our most popular searches: </p>
+<div id="home-tags">
+	<% @tags.each do |tag| %>		
+		<div class="gif-tag"><div class="tag-left"></div><div class="tag-stretch"><%= link_to tag.name, tag %></div> <div class="tag-right"></div></div>
+	<% end %>
+	<%= link_to "See All", tags_path %>
+</div>
+-->
 </div>

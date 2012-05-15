@@ -1,14 +1,24 @@
-<div id='centered-search-gifs'>
-	<%= render 'shared/search' %>
-</div>
-
+<%= render 'shared/rightColumn' %>
 
 <div id='gifs-centered'>
+	<% if @gifs.empty? %>
+		<h2>No results</h2>
+		
+		<% @confusedGifs = Gif.confusedGif %>
+		<% @confusedGifs.each do |gif| %>
+			<div class='gif-image-bg'>
+				<%= image_tag gif.image.url, class: 'gif-image', height: '150px' %>
+			</div>
+		<% end %>
+		
+		<p>Well crap.  We can't find any gifs for your search term.  Try <%= link_to 'browsing our tags', tags_path %> or suggest a new search term by emailing us here: <a href="mailto:andrewzimmer906@gmail.com?Subject=Tag%20Suggestion">andrewzimmer906@gmail.com</a>.</p>
+	<% end %>
+
 	<% @gifs.each do |gif| %>
 		<% @gif = gif %>
 		<%= render 'shared/gifWithTags' %>
 	<% end %>
-	
-	<%= will_paginate @gifs %>
 </div>
+
+<%= will_paginate @gifs %>
 

@@ -5,23 +5,50 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=213830385347079";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div id='body-wrapper'>
+	<% if !@hideHeader %>
 		<header>
-			<h1><%= link_to 'Snappy Comeback', root_path %></h1>
-			<div style="clear: both;"></div> 
-			<%= link_to 'New Gif', new_gif_path, class: 'button white right' %>
+			<%= link_to 'Home', root_path, class: 'small-logo' %>
+			<%= render 'shared/search' %>
+			
+			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Find the perfect reaction GIF!">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			
+			<div class="fb-like" data-href="http://snappy-comeback.herokuapp.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div>
+			<!-- <%= link_to 'New Gif', new_gif_path, class: 'button white right' %> -->
+			<div style="clear: both;"></div> 			
 		</header>
-		
+	<% end %>
 		<div id='main'>
 			<%= yield %>
+			<script type="text/javascript">
+			  var uvOptions = {};
+			  (function() {
+			    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+			    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/wiB9CGHHeetfmZNAWOSgTw.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+			  })();
+			</script>
 		</div>
 	</div>
 	
+	
+	
 	<footer>
-		<h1>Footer - 2012</h1>
+		<h1>©Snappy Comeback 2012, made by Andrew Zimmer | <a href="https://twitter.com/#!/andrewzimmer906">@andrewzimmer906</a></h1>
 	</footer>
 </body>
 

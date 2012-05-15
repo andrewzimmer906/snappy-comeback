@@ -1,13 +1,11 @@
-<div id='centered-search-gifs'>
-	<%= render 'shared/search' %>
-</div>
-
+<%= render 'shared/rightColumn' %>
 
 <div id='gifs-centered'>
+	<h1>Help us out! We need to sort these gifs so they can be found using search.<br/><br/>Press <em>edit tags</em> and assign emotions to any gif.</h1>
 	<% @gifs.each do |gif| %>
 		<% @gif = gif %>
 		<%= render 'shared/gifWithTags' %>
 	<% end %>
-	
 </div>
 
+<%= will_paginate @gifs %>

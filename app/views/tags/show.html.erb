@@ -1,7 +1,4 @@
-<div id='centered-search-gifs'>
-	<%= render 'shared/search' %>
-</div>
-
+<%= render 'shared/rightColumn' %>
 
 <div id='gifs-centered'>
 	<% @gifs.each do |gif| %>
@@ -10,3 +7,4 @@
 	<% end %>
 </div>
 
+<%= will_paginate @gifs %>
