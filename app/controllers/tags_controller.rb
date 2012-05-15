@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-  	 @tags = Tag.all #Tag.search(params)
+  	 @tags = Tag.order(:name) #Tag.search(params)
   end
 
   # GET /tags/1
