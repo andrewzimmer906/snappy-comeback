@@ -15,7 +15,7 @@ gem 'aws-sdk'
 # gem 'sqlite3'
 gem 'heroku'
 gem 'sqlite3', :group => [:development, :test]
-gem 'pg' , :group => [:production]
+gem 'pg' , :group => [:production, :staging]
 #gem 'pg'
 
 gem 'tire'

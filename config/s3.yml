@@ -8,6 +8,11 @@ test:
   access_key_id: AKIAJYZNA6RWDR64BFPA
   secret_access_key: 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
   
+staging:
+  bucket: snappycomeback-bucket-test
+  access_key_id: AKIAJYZNA6RWDR64BFPA
+  secret_access_key: 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
+  
 production:
   bucket: snappycomeback-bucket-pro
   access_key_id: AKIAJYZNA6RWDR64BFPA #ENV['AWS_ACCESS_KEY_ID']
