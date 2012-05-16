@@ -48,3 +48,9 @@ $(function() {
 				}
 			});
 	});
+	
+$('#copy_url').live('click', function(event){
+    event.preventDefault();
+    console.log($(this).attr('data-url'));
+//    $.post($(this).attr('data-href') + "?address=" + $($(this).attr('data-address-id')).val(), function(data){} );
+});
