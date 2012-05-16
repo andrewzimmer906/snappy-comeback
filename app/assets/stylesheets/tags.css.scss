@@ -1,3 +1,64 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag-field {
+	display:block;
+}
+
+.checkbox-tag {
+	display:inline-block;
+	margin:8px 5px 0px 5px;
+}
+
+.tag-stretch {
+	display: inline-block;
+	padding:4px 0px;
+	background: url(image_path('tag-stretch.png')) repeat-x;
+	height:19px;
+	font-weight: bold;
+}
+
+.tag-left {
+	margin: -8px 0px;
+	padding:0px;
+	background: url(image_path('tag-left.png')) no-repeat;
+	width:5px;
+	height:27px;
+	display:inline-block;
+}
+
+.tag-right {
+	margin: -8px -5px;
+	padding: 0px;
+	background: url(image_path('tag-right.png')) no-repeat;
+	width: 16px;
+	height: 27px;	
+	display:inline-block;
+}
+
+.gif-tag {
+	margin: 8px 5px 0px 0px;
+	padding:0px;
+	background-color:transparent;
+	display:inline-block;
+	a {
+		color:#666;
+		
+		&:hover {
+			color:#000;
+			background:transparent;
+		}
+	}
+}
+
+/* saf3+, chrome1+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .tag-left {
+ 	margin: -9px 0px;
+ }
+ 
+ .tag-right {
+ 	margin: -9px -5px;
+ }
+}

@@ -1,12 +1,18 @@
 <%= render 'shared/rightColumn' %>
 
 <div id='gifs-centered'>
-	<h1>Help us out! We need to sort these gifs so they can be found using search.<br/><br/>Press <em>edit tags</em> and assign emotions to any gif.</h1>
-	<hr />
-	<% @gifs.each do |gif| %>
-		<% @gif = gif %>
-		<%= render 'shared/gifWithTags' %>
+	
+	<% if @gifs.empty? %>
+		<span id='professor'><%= image_tag('professor.jpeg') %></span>
+		<h2 id="smallTopMargin" style="margin-top:0px;">Good News Everyone!  All Gifs have been tagged!  Try <%= link_to 'browsing our tags', tags_path %> or  <%= link_to 'viewing the newest gifs', gifs_path %>.</h2>
+	<% else %>
+		<h1>Help us out! We need to sort these gifs so they can be found using search.<br/><br/>Press <em>edit tags</em> and assign emotions to any gif.</h1>
+		<hr />
+		<% @gifs.each do |gif| %>
+			<% @gif = gif %>
+			<%= render 'shared/gifWithTags' %>
+		<% end %>
 	<% end %>
 </div>
 
-<%= will_paginate @gifs %>
+<!-- <%= will_paginate @gifs %> -->

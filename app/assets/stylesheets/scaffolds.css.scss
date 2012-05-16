@@ -7,6 +7,7 @@ html, body {
   margin:0px;
   height:100%;
   min-height:454px;
+  min-width:872px;
 }
 
 /*Opera Fix*/
@@ -26,7 +27,6 @@ body:before {
 	overflow:auto;
 	padding-bottom:20px;
 	height:100%;
-	min-width:847px;
 }
 
 p, ol, ul, td {
