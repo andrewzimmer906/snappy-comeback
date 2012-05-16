@@ -26,12 +26,10 @@
 			<%= link_to 'Home', root_path, class: 'small-logo' %>
 			<%= render 'shared/search' %>
 			
-			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Find the perfect reaction GIF!">Tweet</a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://gifsearch.me" data-text="The first search engine for GIFs" data-hashtags="gif">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			
-			<div class="fb-like" data-href="http://snappy-comeback.herokuapp.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div>
-			<!-- <%= link_to 'New Gif', new_gif_path, class: 'button white right' %> -->
-			<div style="clear: both;"></div> 			
+			<div class="fb-like" data-href="http://gifsearch.me" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div>		
 		</header>
 	<% end %>
 		<div id='main'>
