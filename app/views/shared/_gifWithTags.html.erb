@@ -2,8 +2,8 @@
 <div class='gif-image-bg'>
 	<%= image_tag @gif.image.url, class: 'gif-image', height: '150px' %>
 	
-	<%= link_to 'Copy Image URL', '#', :class => "white button copy_url", :"data-url" => @gif.image.url + '.gif' %>
-	<%= link_to 'Copy URL', '#', :class => "white button copy_url",  :"data-url" => gif_url(@gif, only_path: false) %>
+	<!-- <%= link_to 'Copy Image URL', '#', :class => "white button copy_url", :"data-url" => @gif.image.url + '.gif' %>
+	<%= link_to 'Copy URL', '#', :class => "white button copy_url",  :"data-url" => gif_url(@gif, only_path: false) %> -->
 </div>
 <% @gif.tags.each do |tag| %>		
 	<div class="gif-tag"><div class="tag-left"></div><div class="tag-stretch"><%= link_to tag.name, tag %></div> <div class="tag-right"></div></div>
