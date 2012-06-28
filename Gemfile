@@ -18,7 +18,7 @@ gem 'sqlite3', :group => [:development, :test]
 gem 'pg' , :group => [:production, :staging]
 #gem 'pg'
 
-gem 'tire'
+gem "tire", "~> 0.4.2"
 gem 'will_paginate'
 
 # Gems used only for assets and not required
