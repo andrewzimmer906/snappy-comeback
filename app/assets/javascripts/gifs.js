@@ -49,8 +49,29 @@ $(function() {
 			});
 	});
 	
-$('#copy_url').live('click', function(event){
-    event.preventDefault();
-    console.log($(this).attr('data-url'));
-//    $.post($(this).attr('data-href') + "?address=" + $($(this).attr('data-address-id')).val(), function(data){} );
+$(document).ready(function(){
+	$('a.copy_url').zclip({
+		path:'ZeroClipboard.swf',
+		copy:function(){
+		    return $(this).attr('data-url');
+		},
+		afterCopy:function(){
+		   console.log("copied");
+		}
+		
+	});
+	
+	$('a.copy_url').fadeTo(0,0);
+	
+	$(".gif-image-bg").hover(
+		function() {
+			console.log('hover on');
+			$(this).find('a').animate({ opacity:1.0}, 250);
+		},
+		function() {
+			console.log('hover off');
+			$(this).find('a').animate({ opacity:0.0}, 250);
+		}
+	);
 });
+

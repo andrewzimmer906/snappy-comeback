@@ -34,7 +34,23 @@
 	background: -moz-linear-gradient(top,  #fff,  #ededed);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
 	margin-bottom:10px;
+	
+	
+	a.copy_url {
+		float:right;
+		display:inline;
+		margin:0px 5px;
+		position:relative;
+		top:-40px;
+	}
+	
+	&:hover {
+		a.copy_url {
+			display:inline;
+		}
+	}
 }
+
 .gif-image {
 	margin:10px auto;
 	display: block;
