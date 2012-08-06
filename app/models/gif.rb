@@ -76,6 +76,6 @@ class Gif < ActiveRecord::Base
   private
   
   def assign_tags
-	  self.tag_names = tags.map(&:name).join(' ')
+	  self.tag_names = tags.map(&:searchString).join(' ')
   end
 end

@@ -7,6 +7,7 @@ class Tag < ActiveRecord::Base
 	end
 	
 	before_save :calculateCount
+	after_save :update_gifs
 	
 	has_many :taggings, :dependent => :destroy
 	has_many :gifs, :through => :taggings
@@ -31,4 +32,19 @@ class Tag < ActiveRecord::Base
 	def calculateCount 
 		self.count = self.gifs.count
 	end
+	
+	def update_gifs
+    self.gifs.each do |g|
+		  g.save
+		  puts g.title
+		end
+  end
+	
+	def searchString
+	  if(self.searchData)
+	    self.name + " " + self.searchData;
+    else
+      self.name
+    end
+  end
 end
